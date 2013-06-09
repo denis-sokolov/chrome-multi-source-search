@@ -1,0 +1,22 @@
+{
+	"name": "__MSG_name__",
+	"version": "0.1",
+	"manifest_version": 2,
+
+	"default_locale": "en",
+	"permissions": [
+		"bookmarks"
+	],
+
+	"background": {
+		"scripts": ["internals/events.js"],
+		"persistent": false
+	},
+	"content_scripts": [
+		{
+			"matches": ["*://*.google.com/search*"],
+			"js": ["jquery.min.js", "content/content.js"],
+			"css": ["content/content.css"]
+		}
+	]
+}

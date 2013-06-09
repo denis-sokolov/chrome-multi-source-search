@@ -1,0 +1,21 @@
+#!/bin/bash
+set -e
+
+if [ ! -d _locales ]; then
+	echo 'Run me from the root of the project'
+	exit 2
+fi
+
+# zip --exclude option is strange
+# workaround with rsync
+
+dir=$(mktemp -d)
+rsync --archive --exclude=dist --exclude=jquery --exclude=maintenance --exclude=.gitignore ./* $dir/
+
+archive=$(pwd -P)/dist/pack.zip
+rm -f $archive
+
+cd $dir
+zip --recurse-paths --move $archive .
+
+rmdir $dir

@@ -1,0 +1,16 @@
+.__MSG_@@extension_id__-infobar {
+	position: fixed;
+	top: 0; left: 0; right: 0;
+	z-index: 5000;
+
+	display: block;
+
+	padding: 8px 10px 5px;
+	background-color: white;
+	border-bottom: 1px solid black;
+}
+
+.__MSG_@@extension_id__-infobar .close {
+	float: right;
+	margin-top: -3px;
+}
