@@ -10,7 +10,7 @@ fi
 # workaround with rsync
 
 dir=$(mktemp -d)
-rsync --archive --exclude=dist --exclude=jquery --exclude=maintenance --exclude=.gitignore ./* $dir/
+rsync --archive --exclude=dist --exclude='*.xcf' --exclude=jquery --exclude=maintenance --exclude=.gitignore ./* $dir/
 
 archive=$(pwd -P)/dist/pack.zip
 rm -f $archive

@@ -3,8 +3,9 @@
 
 	"infobar_close": { "message": "Close" },
 
+	"infobar_bookmarks_and": { "message": " and " },
 	"infobar_bookmarks_multiple": {
-		"message": "You have $number$ bookmarks matching $query$",
+		"message": "$number$ more bookmarks matching $query$",
 		"placeholders": {
 			"number": { "content": "$1" },
 			"query": { "content": "$2" }
