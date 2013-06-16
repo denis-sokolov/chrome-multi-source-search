@@ -23,7 +23,7 @@ $(function(){
 	// Save new values
 	$('[type="checkbox"]').on('change', function(){
 		var checkbox = this;
-		var requiredPermission = $(checkbox).data('permission');
+
 		var save = function(){
 			var settings = {};
 			settings[checkbox.name] = checkbox.checked;
@@ -33,13 +33,21 @@ $(function(){
 			checkbox.checked = false;
 		};
 
+		var requiredPermission = $(checkbox).data('permission');
+		var permissionObject = {};
+		if (requiredPermission.substr(0, 4) === 'http') {
+			permissionObject.origins = [requiredPermission];
+		} else {
+			permissionObject.permissions = [requiredPermission];
+		}
+
 		if (!requiredPermission) {
 			save();
 			return;
 		}
 
 		if (checkbox.checked) {
-			chrome.permissions.request({permissions:[requiredPermission]}, function(granted){
+			chrome.permissions.request(permissionObject, function(granted){
 				if (granted) {
 					save();
 				} else {
@@ -47,7 +55,7 @@ $(function(){
 				}
 			});
 		} else {
-			chrome.permissions.remove({permissions:[requiredPermission]});
+			chrome.permissions.remove(permissionObject);
 			save();
 		}
 	});

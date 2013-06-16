@@ -12,7 +12,10 @@
 	"default_locale": "en",
 	"permissions": ["storage"],
 	"options_page": "options/options.html",
-	"optional_permissions": ["bookmarks"],
+	"optional_permissions": [
+		"bookmarks",
+		"https://en.wikipedia.org/"
+	],
 
 	"background": {
 		"scripts": ["internals/events.js"],

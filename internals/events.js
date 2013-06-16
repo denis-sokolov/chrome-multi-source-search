@@ -27,6 +27,26 @@
 			} else { taskDone(); }
 		});
 
+		tasks++;
+		chrome.storage.sync.get('wikipediaEnabled', function(result){
+			if (result.wikipediaEnabled) {
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET',
+					'https://en.wikipedia.org/w/api.php?action=query&list=search&srprop=snippet&format=json&srlimit=1&srsearch='+
+					encodeURIComponent(query)
+				);
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						if (xhr.status === 200) {
+							results.wikipedia = JSON.parse(xhr.responseText);
+						}
+						taskDone();
+					}
+				};
+				xhr.send();
+			} else { taskDone(); }
+		});
+
 		checkDone();
 	};
 
