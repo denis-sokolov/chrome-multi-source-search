@@ -36,7 +36,7 @@
 			if (result.bookmarks.length > 1) {
 				bookmarks.append(chrome.i18n.getMessage('infobar_bookmarks_and')).append(
 					$('<a>')
-						.prop('href', 'chrome://bookmarks/#q='+result.query)
+						.prop('href', 'chrome://bookmarks/#q='+encodeURIComponent(result.query))
 						.text(chrome.i18n.getMessage('infobar_bookmarks_multiple', [
 							result.bookmarks.length - 1,
 							result.query
