@@ -78,4 +78,13 @@
 			}
 		}
 	});
+
+	chrome.storage.sync.get('versionSeen', function(result){
+		if (!result.versionSeen || result.versionSeen < 1) {
+			chrome.tabs.create({
+				url: chrome.extension.getURL('options/options.html')
+			});
+			chrome.storage.sync.set({versionSeen: 1});
+		}
+	});
 })();
