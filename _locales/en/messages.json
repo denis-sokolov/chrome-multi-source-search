@@ -10,5 +10,11 @@
 			"number": { "content": "$1" },
 			"query": { "content": "$2" }
 		}
-	}
+	},
+
+	"options_hosts": { "message": "Websites to inject results" },
+	"options_google" : { "message": "Google search engine" },
+
+	"options_sources" : { "message": "Additional search sources" },
+	"options_bookmarks" : { "message": "Chrome bookmarks" }
 }

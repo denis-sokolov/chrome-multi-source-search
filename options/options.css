@@ -1,0 +1,9 @@
+body {
+	padding: 20px;
+}
+
+h2 { font-size: 120%; }
+
+label { font-weight: inherit; cursor: pointer; }
+
+ul { list-style-type: none; margin: 0; }
