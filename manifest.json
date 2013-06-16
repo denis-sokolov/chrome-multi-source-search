@@ -10,9 +10,9 @@
 	},
 
 	"default_locale": "en",
-	"permissions": ["storage", "bookmarks"],
+	"permissions": ["storage"],
 	"options_page": "options/options.html",
-	"optional_permissions": [],
+	"optional_permissions": ["bookmarks"],
 
 	"background": {
 		"scripts": ["internals/events.js"],

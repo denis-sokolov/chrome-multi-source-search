@@ -22,8 +22,33 @@ $(function(){
 
 	// Save new values
 	$('[type="checkbox"]').on('change', function(){
-		var settings = {};
-		settings[this.name] = this.checked;
-		chrome.storage.sync.set(settings);
+		var checkbox = this;
+		var requiredPermission = $(checkbox).data('permission');
+		var save = function(){
+			var settings = {};
+			settings[checkbox.name] = checkbox.checked;
+			chrome.storage.sync.set(settings);
+		};
+		var revert = function(){
+			checkbox.checked = false;
+		};
+
+		if (!requiredPermission) {
+			save();
+			return;
+		}
+
+		if (checkbox.checked) {
+			chrome.permissions.request({permissions:[requiredPermission]}, function(granted){
+				if (granted) {
+					save();
+				} else {
+					revert();
+				}
+			});
+		} else {
+			chrome.permissions.remove({permissions:[requiredPermission]});
+			save();
+		}
 	});
 });
